@@ -47,4 +47,16 @@ describe YahooFinance::Historical do
       end
     end
   end
+
+  describe "#to_csv" do
+    subject { described_class.daily(ticker, :from => Date.new(2011, 11, 11), :to => Date.new(2011, 11, 11)).to_csv }
+
+    it "returns the raw csv data" do
+      should match "2011-11-11,386.61,388.70,380.26,384.62,23338400,384.62"
+    end
+
+    it "doesn't show the header row" do
+      should_not match "Date,Open,High,Low,Close,Volume,Adj Close"
+    end
+  end
 end

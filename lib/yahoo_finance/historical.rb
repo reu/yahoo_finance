@@ -39,6 +39,10 @@ module YahooFinance
       result.reverse_each(&block)
     end
 
+    def to_csv
+      raw_data.lines.to_a[1..-1].join
+    end
+
     private
 
     def result
