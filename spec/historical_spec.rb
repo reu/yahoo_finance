@@ -33,6 +33,8 @@ describe YahooFinance::Historical do
   describe "#each" do
     subject { described_class.daily ticker, :from => start_date, :to => end_date }
 
+    use_vcr_cassette "AAPL-each"
+
     it "iterates by ascending date order" do
       subject.to_a.first.date.should < subject.to_a.last.date
     end
@@ -51,8 +53,10 @@ describe YahooFinance::Historical do
   describe "#to_csv" do
     subject { described_class.daily(ticker, :from => Date.new(2011, 11, 11), :to => Date.new(2011, 11, 11)).to_csv }
 
+    use_vcr_cassette "AAPL-to_csv", :record => :once
+
     it "returns the raw csv data" do
-      should match "2011-11-11,386.61,388.70,380.26,384.62,23338400,384.62"
+      should match "2011-11-11,386.61,388.70,380.26,384.62,23349500,384.62"
     end
 
     it "doesn't show the header row" do

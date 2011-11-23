@@ -1,0 +1,42 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://ichart.finance.yahoo.com:80/table.csv?s=AAPL&g=d&ignore=.csv&a=10&b=11&c=2011&d=10&e=21&f=2011
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Wed, 23 Nov 2011 12:33:37 GMT
+      p3p:
+      - policyref="http://info.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV
+        TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY
+        ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC GOV"
+      cache-control:
+      - private
+      transfer-encoding:
+      - chunked
+      content-type:
+      - text/csv
+    body: ! 'Date,Open,High,Low,Close,Volume,Adj Close
+
+      2011-11-21,370.40,371.68,365.91,369.01,15999300,369.01
+
+      2011-11-18,378.92,379.99,374.88,374.94,13283500,374.94
+
+      2011-11-17,383.98,384.58,375.50,377.41,17139300,377.41
+
+      2011-11-16,389.25,391.14,384.32,384.77,12449900,384.77
+
+      2011-11-15,380.80,389.50,379.45,388.83,15386100,388.83
+
+      2011-11-14,383.52,385.25,378.20,379.26,15460900,379.26
+
+      2011-11-11,386.61,388.70,380.26,384.62,23338400,384.62
+
+'
+    http_version: '1.1'
